@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Facility {
     private final List<Loan> fundedLoans;
+    private final FacilityOverdrawPredicate facilityOverdrawPredicate;
     private int bankID;
     private int facilityId;
     private float interestRate;
     private int amount;
     private int fundedAmount;
     private List<Covenant> covenants;
-    private final FacilityOverdrawPredicate facilityOverdrawPredicate;
 
     public Facility(int bankID, int facilityId, float interestRate, int amount) {
         this.bankID = bankID;
@@ -29,8 +29,9 @@ public class Facility {
 
     /**
      * check can we fund the loan
-     *  1. check all covenants rules are satisfied
-     *  2. facility is overdrawn or not with new loan
+     * 1. check all covenants rules are satisfied
+     * 2. facility is overdrawn or not with new loan
+     *
      * @param loan input
      * @return true or false
      */
@@ -41,6 +42,7 @@ public class Facility {
 
     /**
      * 1. check all covenants rules are satisfied
+     *
      * @param loan input
      * @return true or false
      */
@@ -54,8 +56,9 @@ public class Facility {
 
     /**
      * fund the loan using facility amount
-     *  1. keep track of loan by adding into fundedLoans list
-     *  2. increase the funded loan amount
+     * 1. keep track of loan by adding into fundedLoans list
+     * 2. increase the funded loan amount
+     *
      * @param loan input
      */
     public void fundLoan(Loan loan) {
@@ -65,6 +68,7 @@ public class Facility {
 
     /**
      * increase the funded loan amount
+     *
      * @param loanAmount amount
      */
     private void increaseFundedAmount(int loanAmount) {
@@ -73,6 +77,7 @@ public class Facility {
 
     /**
      * calculate yield of facility
+     *
      * @return total yield
      */
     public long expectedYield() {
@@ -85,6 +90,7 @@ public class Facility {
 
     /**
      * calculate yield for individual facility
+     *
      * @param loan input loan
      * @return amount
      */

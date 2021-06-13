@@ -12,6 +12,7 @@ public class MaxDefaultPredicate implements IPredicate {
 
     /**
      * check is default likelihood is under threshold
+     *
      * @param loan input
      * @return true or false
      */

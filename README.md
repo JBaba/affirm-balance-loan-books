@@ -6,6 +6,10 @@
 * Run the "App.java"
 * I have already run code for large files so "assignments.csv" and "yields.csv" can be found in root folder
 
+## Details
+
+unfunded loan: Loan{id=425, amount=86614, interestRate=0.35, defaultLikelihood=0.09, state='AZ'}
+
 ## Questions And Answers
 
 ### Q: How long did you spend working on the problem?

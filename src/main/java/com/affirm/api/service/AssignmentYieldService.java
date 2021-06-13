@@ -16,10 +16,10 @@ import java.util.Map;
 public class AssignmentYieldService {
 
     private final List<Loan> loans;
-    // facility to covenants map
-    private Map<Integer, Facility> facilityMap;
     // facility assignments will be stored as we stream loans
     private final List<Map.Entry<Integer, Integer>> assignments;
+    // facility to covenants map
+    private Map<Integer, Facility> facilityMap;
 
     /**
      * @param isSmall identifies if we are reading small folder from resources or
@@ -35,6 +35,7 @@ public class AssignmentYieldService {
 
     /**
      * Add covenants to its respective facilities
+     *
      * @param covenantMap covenants to be linked
      */
     private void linkCovenantToFacilities(Map<Integer, List<Covenant>> covenantMap) {
@@ -45,6 +46,7 @@ public class AssignmentYieldService {
 
     /**
      * sort facilities so cheapest rate is at top
+     *
      * @param facilityMap facilities
      */
     private void sortFacility(Map<Integer, Facility> facilityMap) {
@@ -74,8 +76,9 @@ public class AssignmentYieldService {
 
     /**
      * Process single loan
-     * @apiNote this method can be expose using rest endpoint
+     *
      * @param loan input
+     * @apiNote this method can be expose using rest endpoint
      */
     private void processLoan(Loan loan) {
         // start from top as we need to book cheapest first
@@ -85,9 +88,10 @@ public class AssignmentYieldService {
                 facility.fundLoan(loan);
                 // add to assignments for writing to file
                 assignments.add(Map.entry(loan.getId(), facility.getFacilityId()));
-                break; // exit as no need to proceed
+                return; // exit as no need to proceed
             }
         }
+        System.out.println("unfunded loan: " + loan);
     }
 
     /**

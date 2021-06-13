@@ -15,6 +15,7 @@ public class BannedStatePredicate implements IPredicate {
 
     /**
      * check if given loan has banned state
+     *
      * @param loan input
      * @return is loan from banned state true or false
      */
